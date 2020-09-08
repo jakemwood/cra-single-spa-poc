@@ -16,10 +16,10 @@
     "typescript": "~3.7.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "node ../react-scripts/scripts/start.js",
+    "build": "node ../react-scripts/scripts/build.js",
+    "test": "node ../react-scripts/scripts/test.js",
+    "eject": "node ../react-scripts/scripts/ejec.jst"
   },
   "eslintConfig": {
     "extends": "react-app"
