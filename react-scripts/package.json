@@ -77,7 +77,8 @@
   "description": "Configuration and scripts for Create React App.",
   "devDependencies": {
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "webpack-dynamic-public-path": "^1.0.5"
   },
   "engines": {
     "node": ">=8.10"

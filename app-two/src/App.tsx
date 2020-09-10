@@ -4,6 +4,10 @@ import "./App.css";
 
 const img = require("./96.png");
 
+declare global {
+  const __webpack_public_path__: string;
+}
+
 class App extends React.Component {
   componentDidCatch(e: Error) {
     console.log(e);

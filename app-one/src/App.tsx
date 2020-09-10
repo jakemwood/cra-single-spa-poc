@@ -1,5 +1,7 @@
 import React from "react";
 import "./App.css";
+// @ts-ignore
+console.log(__webpack_require__.p);
 import Logo from "./logo.svg";
 
 class App extends React.Component {
