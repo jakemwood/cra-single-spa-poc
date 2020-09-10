@@ -8,16 +8,9 @@ const reactLifecycles = singleSpaReact({
   React,
   ReactDOM,
   rootComponent: App,
-  domElementGetter: () => document.getElementById("app-one") as Element,
+  domElementGetter: () => document.getElementById("app-two") as Element,
 });
 
-export const bootstrap = [
-  () => {
-    // @ts-ignore
-    __webpack_public_path__ = "webpackPublicPath";
-    return Promise.resolve(true);
-  },
-  reactLifecycles.bootstrap,
-];
+export const bootstrap = [reactLifecycles.bootstrap];
 export const mount = [reactLifecycles.mount];
 export const unmount = [reactLifecycles.unmount];

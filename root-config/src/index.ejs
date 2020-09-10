@@ -53,7 +53,9 @@
       {
         "imports": {
           "@alexz/root-config": "//localhost:9000/alexz-root-config.js",
-          "@alexz/app-one": "//localhost:3000/alexz-app-one.js"
+          "@alexz/app-one": "//localhost:3000/single-spa-bundle.js",
+          "@alexz/app-two": "//localhost:3001/single-spa-bundle.js",
+          "@alexz/navbar": "//localhost:3002/single-spa-bundle.js"
         }
       }
     </script>
@@ -79,7 +81,9 @@
   </head>
   <body>
     <main>
-      <div id="proj-app"></div>
+      <div id="navbar"></div>
+      <div id="app-one"></div>
+      <div id="app-two"></div>
     </main>
     <script>
       System.import("@alexz/root-config");
