@@ -9,7 +9,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
+        <header className="App-header-1">
           {/* Doesn't know where to get assets */}
           <h1>App One</h1>
         </header>
