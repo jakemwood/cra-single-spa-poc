@@ -46,8 +46,7 @@ module.exports = function (proxy, allowedHost) {
     // So we will disable the host check normally, but enable it if you have
     // specified the `proxy` setting. Finally, we let you override it if you
     // really know what you're doing with a special environment variable.
-    disableHostCheck:
-      !proxy || process.env.DANGEROUSLY_DISABLE_HOST_CHECK === "true",
+    disableHostCheck: true,
     // Enable gzip compression of generated files.
     compress: true,
     // Silence WebpackDevServer's own logs since they're generally not useful.
@@ -129,16 +128,5 @@ module.exports = function (proxy, allowedHost) {
         require(paths.proxySetup)(app);
       }
     },
-    // after(app) {
-    //   // Redirect to `PUBLIC_URL` or `homepage` from `package.json` if url not match
-    //   app.use(redirectServedPath(paths.publicUrlOrPath));
-
-    //   // This service worker file is effectively a 'no-op' that will reset any
-    //   // previous service worker registered for the same host:port combination.
-    //   // We do this in development to avoid hitting the production cache if
-    //   // it used the same host and port.
-    //   // https://github.com/facebook/create-react-app/issues/2272#issuecomment-302832432
-    //   app.use(noopServiceWorkerMiddleware(paths.publicUrlOrPath));
-    // },
   };
 };
