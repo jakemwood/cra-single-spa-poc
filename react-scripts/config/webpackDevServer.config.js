@@ -20,10 +20,16 @@ const getHttpsConfig = require("./getHttpsConfig");
 const host = process.env.HOST || "0.0.0.0";
 const sockHost = process.env.WDS_SOCKET_HOST;
 const sockPath = process.env.WDS_SOCKET_PATH; // default: '/sockjs-node'
-const sockPort = process.env.WDS_SOCKET_PORT;
+const sockPort = process.env.PORT;
 
 module.exports = function (proxy, allowedHost) {
   return {
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+      "Access-Control-Allow-Headers":
+        "X-Requested-With, content-type, Authorization",
+    },
     // WebpackDevServer 2.4.3 introduced a security fix that prevents remote
     // websites from potentially accessing local content through DNS rebinding:
     // https://github.com/webpack/webpack-dev-server/issues/887
@@ -70,7 +76,7 @@ module.exports = function (proxy, allowedHost) {
     // updated. The WebpackDevServer client is included as an entry point
     // in the webpack development configuration. Note that only changes
     // to CSS are currently hot reloaded. JS changes will refresh the browser.
-    hot: true,
+    // hot: true,
     // Use 'ws' instead of 'sockjs-node' on server since we're using native
     // websockets in `webpackHotDevClient`.
     transportMode: "ws",
@@ -123,16 +129,16 @@ module.exports = function (proxy, allowedHost) {
         require(paths.proxySetup)(app);
       }
     },
-    after(app) {
-      // Redirect to `PUBLIC_URL` or `homepage` from `package.json` if url not match
-      app.use(redirectServedPath(paths.publicUrlOrPath));
+    // after(app) {
+    //   // Redirect to `PUBLIC_URL` or `homepage` from `package.json` if url not match
+    //   app.use(redirectServedPath(paths.publicUrlOrPath));
 
-      // This service worker file is effectively a 'no-op' that will reset any
-      // previous service worker registered for the same host:port combination.
-      // We do this in development to avoid hitting the production cache if
-      // it used the same host and port.
-      // https://github.com/facebook/create-react-app/issues/2272#issuecomment-302832432
-      app.use(noopServiceWorkerMiddleware(paths.publicUrlOrPath));
-    },
+    //   // This service worker file is effectively a 'no-op' that will reset any
+    //   // previous service worker registered for the same host:port combination.
+    //   // We do this in development to avoid hitting the production cache if
+    //   // it used the same host and port.
+    //   // https://github.com/facebook/create-react-app/issues/2272#issuecomment-302832432
+    //   app.use(noopServiceWorkerMiddleware(paths.publicUrlOrPath));
+    // },
   };
 };
